@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="scau.mappers.ICustomerDAO">
+
+<select id="selectCustomerByID" parameterType="int" resultType="customer">
+select * from customer where customer_id = #{id}
+</select>
+
+<!-- 查询同一个位置的customer -->
+ <resultMap id="AddressCustomerList" type="customer">
+    <id property="customer_id" column="customer_id" />
+    <result property="first_name" column="first_name" />
+    <association property="address" javaType="address">
+    <id property="address_id" column="address_id" />
+    <result property="address" column="address" />
+    </association>
+ </resultMap>
+ 
+
+ 
+<select id="getAllCustomer"  resultType="customer">
+select * from customer
+</select>
+
+<select id="getAddressCustomerByID" parameterType="int" resultMap="AddressCustomerList">
+select * from customer,address where customer.address_id=address.address_id and address.city_id=#{address_id}
+</select>
+
+<select id="getCustomerNumByStore"  resultType="java.util.LinkedHashMap">
+select store_id, count(store_id)  from customer group by store_id
+</select>
+
+</mapper>

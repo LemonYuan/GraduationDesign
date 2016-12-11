@@ -1,0 +1,1 @@
+{"categories":["store1","store2"],"data":["20","15"]}

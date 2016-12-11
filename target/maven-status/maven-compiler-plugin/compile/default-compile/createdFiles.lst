@@ -1,0 +1,6 @@
+scau\mapper\ICustomerDAO.class
+scau\mapper\IAddressDAO.class
+scau\test\Test.class
+scau\models\Address.class
+scau\models\Customer.class
+scau\controllers\CustomerController.class
