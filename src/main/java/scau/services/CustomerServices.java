@@ -22,51 +22,51 @@ import scau.mappers.ICustomerDAO;
 import scau.models.Customer;
 
 @Service
-public class CustomerServices implements ICustomerServices{
+public class CustomerServices implements ICustomerServices {
 	@Autowired
 	ICustomerDAO iCustomerDAO;
 
 	public ModelAndView getInformation() {
-		//Customer customer = iCustomerDAO.selectCustomerByID(1);
-		List<Customer> customer_list=iCustomerDAO.getAllCustomer();
-        System.out.println("所有的用户数为："+customer_list.size());
-        ModelAndView modelAndView=new ModelAndView("echartsTest");
-        modelAndView.addObject("customers", customer_list);
+		// Customer customer = iCustomerDAO.selectCustomerByID(1);
+		List<Customer> customer_list = iCustomerDAO.getAllCustomer();
+		System.out.println("所有的用户数为：" + customer_list.size());
+		ModelAndView modelAndView = new ModelAndView("echartsTest");
+		modelAndView.addObject("customers", customer_list);
 		return modelAndView;
 	}
-	
+
 	public JsonObject getCustomerNum() {
-		List<LinkedHashMap> customer_ist=iCustomerDAO.getCustomerNumByStore();
-		
-		JsonObject jo=new JsonObject();
-		JsonArray categories=new JsonArray();
-		JsonArray data=new JsonArray();
-		
-		for(int i=0;i<customer_ist.size();i++){
-			LinkedHashMap hm=customer_ist.get(i);
-			Iterator iter =hm.entrySet().iterator();
-			int index=0;
-			while(iter.hasNext()){
-				Entry entry=(Entry)iter.next();
-				System.out.println(entry.getKey()+"  "+entry.getValue());
-				if(index==0){
-					JsonPrimitive tem_js=new JsonPrimitive(entry.getValue().toString());
+		List<LinkedHashMap> customer_ist = iCustomerDAO.getCustomerNumByStore();
+
+		JsonObject jo = new JsonObject();
+		JsonArray categories = new JsonArray();
+		JsonArray data = new JsonArray();
+
+		for (int i = 0; i < customer_ist.size(); i++) {
+			LinkedHashMap hm = customer_ist.get(i);
+			Iterator iter = hm.entrySet().iterator();
+			int index = 0;
+			while (iter.hasNext()) {
+				Entry entry = (Entry) iter.next();
+				System.out.println(entry.getKey() + "  " + entry.getValue());
+				if (index == 0) {
+					JsonPrimitive tem_js = new JsonPrimitive(entry.getValue().toString());
 					categories.add(tem_js);
-                   index=1;
-				}
-				else{
-					JsonPrimitive tem_js=new JsonPrimitive(entry.getValue().toString());
+					index = 1;
+				} else {
+					JsonPrimitive tem_js = new JsonPrimitive(entry.getValue().toString());
 					data.add(tem_js);
-					index=0;
+					index = 0;
 				}
-				
+
 			}
 		}
 		jo.add("categories", categories);
 		jo.add("data", data);
+		System.out.println(jo.toString());
 		return jo;
 	}
-	
+
 	public ICustomerDAO getiCustomerDAO() {
 		return iCustomerDAO;
 	}

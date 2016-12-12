@@ -14,7 +14,6 @@
     <button id="barCharButton" >acquire bar chart</button>
     
     <script type="text/javascript">
-
         $("#barCharButton").click(function(){
 		     
         	 $.ajax({
