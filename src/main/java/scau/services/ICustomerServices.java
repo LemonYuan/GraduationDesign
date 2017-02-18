@@ -6,5 +6,5 @@ import com.google.gson.JsonObject;
 
 public interface ICustomerServices {
 	public ModelAndView getInformation();
-	public JsonObject getCustomerNum();
+	public JsonObject getCustomerNum(String x,String y);
 }

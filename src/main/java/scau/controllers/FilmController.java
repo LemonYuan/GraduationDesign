@@ -14,10 +14,10 @@ import scau.services.IFilmServices;
 public class FilmController {
   
 	@Autowired
-	IFilmServices iFilmServices;
+	IFilmServices filmServices;
 	
 	@RequestMapping("/getFilmsByCategory")
 	public @ResponseBody JsonObject getFilmsByCategory(){
-		return iFilmServices.getFilmsByCategory();
+		return filmServices.getFilmsByCategory();
 	}
 }

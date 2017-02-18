@@ -1,17 +1,13 @@
 package scau.services;
 
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map.Entry;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.google.gson.JsonArray;
@@ -35,8 +31,11 @@ public class CustomerServices implements ICustomerServices {
 		return modelAndView;
 	}
 
-	public JsonObject getCustomerNum() {
-		List<LinkedHashMap> customer_ist = iCustomerDAO.getCustomerNumByStore();
+	public JsonObject getCustomerNum(String x,String y) {
+	    HashMap map=new HashMap();
+	    map.put("x", x);
+	    map.put("y", y);
+		List<LinkedHashMap> customer_ist = iCustomerDAO.getCustomerNumByStore(map);
 
 		JsonObject jo = new JsonObject();
 		JsonArray categories = new JsonArray();

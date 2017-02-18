@@ -28,8 +28,8 @@ select * from customer
 select * from customer,address where customer.address_id=address.address_id and address.city_id=#{address_id}
 </select>
 
-<select id="getCustomerNumByStore"  resultType="java.util.LinkedHashMap">
-select store_id, count(store_id)  from customer group by store_id
+<select id="getCustomerNumByStore"  parameterType="map" resultType="java.util.LinkedHashMap" statementType="STATEMENT">
+select ${x},${y} from customer group by store_id
 </select>
 
 </mapper>

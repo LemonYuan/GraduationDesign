@@ -11,7 +11,7 @@
 <body>
     <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
     <div id="main" style="width: 600px;height:600px;""></div>
-    <button id="pieCharButton" >acquire pie chart</button>
+    <button id="pieCharButton" >产品数量分类图</button>
     
     <script type="text/javascript">
 

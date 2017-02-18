@@ -1,5 +1,6 @@
 package scau.mappers;
 
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 
@@ -9,5 +10,5 @@ public interface ICustomerDAO {
 public Customer selectCustomerByID(int id);
 public List<Customer> getAddressCustomerByID(int address_id);
 public List<Customer> getAllCustomer();
-public List<LinkedHashMap> getCustomerNumByStore();
+public List<LinkedHashMap> getCustomerNumByStore(HashMap map);
 }
